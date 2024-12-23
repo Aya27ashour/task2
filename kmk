@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Under Mouse</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <!-- Small Images -->
+  <img src="https://via.placeholder.com/150" alt="Image 1" class="image">
+  <img src="https://via.placeholder.com/150/0000FF" alt="Image 2" class="image">
+  <img src="https://via.placeholder.com/150/FF0000" alt="Image 3" class="image">
+
+  <!-- Large Image on Hover -->
+  <img id="hoverImage" class="hover-image" alt="Hovered Image">
+
+  <script>
+    $(document).ready(function () {
+      const hoverImage = $("#hoverImage");
+
+      $(".image").on("mouseenter", function () {
+        hoverImage.attr("src", $(this).attr("src")); // Use the hovered image's source
+        hoverImage.show();
+      });
+
+      $(".image").on("mouseleave", function () {
+        hoverImage.hide();
+      });
+
+      $(".image").on("mousemove", function (event) {
+        hoverImage.css({
+          left: event.pageX + 20 + "px", // Position a bit to the right of the pointer
+          top: event.pageY + 20 + "px"  // Position a bit below the pointer
+        });
+      });
+    });
+  </script>
+</body>
+</html>
